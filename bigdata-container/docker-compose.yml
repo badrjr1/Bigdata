@@ -1,0 +1,101 @@
+services:
+  namenode:
+    image: bde2020/hadoop-namenode:2.0.0-hadoop2.7.4-java8
+    container_name: namenode-HDFS
+    volumes:
+      - type: bind
+        source: D:\user\projet\pfa\bigData\volume\namenode
+        target: /hadoop/dfs/name
+    environment:
+      - CLUSTER_NAME=test
+    env_file:
+      - ./hadoop-hive.env
+    ports:
+      - "50071:50070"
+      - "8020:8020"
+    networks:
+      - bigdata_net
+
+  datanode:
+    image: bde2020/hadoop-datanode:2.0.0-hadoop2.7.4-java8
+    container_name: datanode-HDFS
+    volumes:
+      - type: bind
+        source: D:\user\projet\pfa\bigData\volume\datanode
+        target: /hadoop/dfs/data
+    env_file:
+      - ./hadoop-hive.env
+    environment:
+      SERVICE_PRECONDITION: "namenode:50070"
+    ports:
+      - "50075:50075"
+    networks:
+      - bigdata_net
+  
+  hive-server:
+    image: bde2020/hive:2.3.2-postgresql-metastore
+    env_file:
+      - ./hadoop-hive.env
+    environment:
+      HIVE_CORE_CONF_javax_jdo_option_ConnectionURL: "jdbc:postgresql://hive-metastore/metastore"
+      SERVICE_PRECONDITION: "hive-metastore:9083"
+    ports:
+      - "10000:10000"
+    networks:
+      - bigdata_net
+  
+  hive-metastore:
+    image: bde2020/hive:2.3.2-postgresql-metastore
+    env_file:
+      - ./hadoop-hive.env
+    command: /opt/hive/bin/hive --service metastore
+    environment:
+      SERVICE_PRECONDITION: "namenode:50070 datanode:50075 hive-metastore-postgresql:5432"
+    ports:
+      - "9083:9083"
+    networks:
+      - bigdata_net
+  
+  hive-metastore-postgresql:
+    image: bde2020/hive-metastore-postgresql:2.3.0
+    networks:
+      - bigdata_net
+  
+  presto-coordinator:
+    image: shawnzhu/prestodb:0.181
+    ports:
+      - "8082:8082"
+    networks:
+      - bigdata_net
+  
+  spark-master:
+    image: bitnami/spark:3.5.0
+    container_name: spark-masterD
+    environment:
+      - SPARK_MODE=master
+    ports:
+      - "7077:7077"     # Cluster Spark
+      - "8083:8083"     # UI Spark Master
+    volumes:
+      - ./conf/hive-site.xml:/opt/bitnami/spark/conf/hive-site.xml
+    networks:
+      - bigdata_net
+
+  spark-worker:
+    image: bitnami/spark:3.5.0
+    container_name: spark-workerD
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://spark-master:7077
+    ports:
+      - "8081:8081"     # UI Spark Worker
+    depends_on:
+      - spark-master
+    volumes:
+      - ./conf/hive-site.xml:/opt/bitnami/spark/conf/hive-site.xml
+    networks:
+      - bigdata_net
+
+networks:
+  bigdata_net:
+    external: true
