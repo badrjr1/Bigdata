@@ -1,0 +1,122 @@
+<div class="card-container">
+  <div class="period-box">
+    <p>
+  Période d’analyse du
+  <strong class="highlight">{{ dateD }}</strong>
+  au
+  <strong class="highlight">{{ dateF }}</strong>
+</p>
+  </div>
+</div>
+
+<div class="card-container">
+  <div class="card-box orange">
+    <div class="icon"><i class="fas fa-shopping-cart"></i></div>
+    <div class="content">
+      <p>Nombre de commande</p>
+      <h3>{{ nbrcmd }}</h3>
+    </div>
+  </div>
+
+  <div class="card-box green">
+    <div class="icon"><i class="fas fa-globe"></i></div>
+    <div class="content">
+      <p>CA internnationnal</p>
+      <h3>{{ ca }}</h3>
+    </div>
+  </div>
+
+  <div class="card-box red">
+    <div class="icon"><i class="fas fa-boxes"></i></div>
+    <div class="content">
+      <p>Nombre de produit</p>
+      <h3>{{ nbrproduit }}</h3>
+    </div>
+  </div>
+
+  <div class="card-box blue">
+    <div class="icon"><i class="fas fa-calculator"></i></div>
+    <div class="content">
+      <p>Nombre moyen d'article par panier</p>
+      <h3>{{ panmyn }}</h3>
+    </div>
+  </div>
+</div>
+<app-tableau></app-tableau>
+<!-- 1er ligne -->
+<div class="charts-container">
+  <!-- Card 1 -->
+  <div class="chart-card green">
+    <div class="chart-area">
+      <!-- Ici tu peux insérer un <canvas> ou une image de graphe -->
+      <canvas id="sizegrandstock"></canvas>
+    </div>
+    <div class="chart-info">
+      <h4>Le stocke des tailles </h4> 
+    </div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="chart-card orange">
+    <div class="chart-area">
+      <canvas id="dayofweek"></canvas>
+    </div>
+    <div class="chart-info">
+      <h4>Nombre de commande moyenne par jour de semaine</h4>
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="email-statistics-card">
+    <h3>Statut de la vente</h3>
+    <div class="chart-container">
+      <canvas id="statusstt"></canvas>
+    </div>
+
+    <div class="legend">
+      <div><span class="dot opened"></span> Shipped</div>
+      <div><span class="dot read"></span> Cancelled</div>
+      <div><span class="dot deleted"></span> Delivered to Buyer</div>
+      <div><span class="dot unopened"></span> Returned to Seller</div>
+    </div>
+  </div>
+
+</div>
+<!-- 2eme ligne -->
+<div class="charts-container">
+  <!-- Card 4 -->
+  <div class="chart-card green">
+    <div class="chart-area">
+      <!-- Ici tu peux insérer un <canvas> ou une image de graphe -->
+      <canvas id="couleurgrandstock"></canvas>
+    </div>
+    <div class="chart-info">
+      <h4>Le stocke des articles selon leur couleur</h4>
+    </div>
+  </div>
+
+  <!-- Card 5 -->
+  <div class="chart-card orange">
+    <div class="chart-area">
+      <canvas id="topstates"></canvas>
+    </div>
+    <div class="chart-info">
+      <h4>Nombre de commandes expédiées par état (state) </h4>
+    </div>
+  </div>
+
+  <!-- Card 6 -->
+  <div class="email-statistics-card">
+    <h3>Mode de livraison</h3>
+    <div class="chart-container">
+      <canvas id="topmodelivraison"></canvas>
+    </div>
+
+    <div class="legend">
+      <div><span class="dot opened"></span> Expedited</div>
+      <div><span class="dot read"></span> Standard</div>
+    </div>
+  </div>
+</div>
+<!-- 3eme ligne -->
+ 

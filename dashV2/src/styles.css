@@ -1,0 +1,205 @@
+/* You can add global styles to this file, and also import other style files */
+
+.card-container {
+  display: flex;
+  gap: 20px;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+.card-box {
+  background: #fff;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: 15px 20px;
+  min-width: 220px;
+  transition: transform 0.3s ease;
+}
+
+.card-box:hover {
+  transform: translateY(-5px);
+}
+
+.card-box .icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+  color: white;
+  font-size: 20px;
+}
+
+.card-box .content p {
+  margin: 0;
+  font-size: 14px;
+  color: #999;
+}
+
+.card-box .content h3 {
+  margin: 5px 0 0;
+  font-size: 20px;
+  color: #333;
+}
+
+.card-box .content h3 span {
+  font-size: 14px;
+  color: #777;
+}
+
+/* Color themes */
+.orange .icon { background-color: #f4a100; }
+.green .icon { background-color: #28a745; }
+.red .icon { background-color: #dc3545; }
+.blue .icon { background-color: #17a2b8; }
+
+.charts-container {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.chart-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: 32%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.chart-area {
+  height: 180px;
+  padding: 40px;
+}
+
+.chart-area canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+.chart-info {
+  padding: 6px 10px !important; /* réduit l'espace interne */
+  border-top: 1px solid #eee;
+  font-size: 13px;
+  line-height: 1.2;
+}
+
+.chart-info h4 {
+  margin: 0 0 5px;
+  font-size: 18px;
+  color: #333;
+}
+
+.chart-info .positive {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.footer {
+  font-size: 12px;
+  color: #999;
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+}
+
+.footer i {
+  margin-right: 5px;
+}
+
+/* Colors */
+.green .chart-area {
+  background-color: #4caf50;
+}
+
+.orange .chart-area {
+  background-color: #ff9800;
+}
+
+.red .chart-area {
+  background-color: #f44336;
+}
+
+
+
+.period-box {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
+.email-statistics-card {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 350px;
+  margin: auto;
+}
+
+.email-statistics-card h3 {
+  margin: 0;
+  font-size: 20px;
+  color: #333;
+}
+
+.email-statistics-card .subtitle {
+  margin: 5px 0 20px;
+  font-size: 14px;
+  color: #999;
+}
+
+.chart-container {
+  height: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chart-container canvas {
+  max-width: 180px;
+  max-height: 180px;
+}
+
+.legend {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+  font-size: 14px;
+}
+
+.legend .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.legend .opened { background-color: #26c6da; }
+.legend .read { background-color: #ffca28; }
+.legend .deleted { background-color: #ef5350; }
+.legend .unopened { background-color: #e0e0e0; }

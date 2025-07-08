@@ -1,0 +1,1 @@
+export type StockMap = Record<string, number>;

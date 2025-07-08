@@ -1,0 +1,43 @@
+<div class="table-row">
+  <!-- Tableau 1 -->
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>REF. produit</th>
+          <th>Prix unitair</th>
+          <th>Nombre d'article vendu</th>
+          <th>Revenue</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let style of styles">
+      <td>{{ style.name }}</td>
+      <td>₹ {{ style.stats.rate }}</td>
+      <td>{{ style.stats.totalPcs }}</td>
+      <td>₹ {{ style.stats.totalRevenue }}</td>
+    </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Tableau 2 -->
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Client</th>
+          <th>nombre de produit achete</th>
+          <th>Montant total payé</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let client of customers">
+          <td>{{ client.name }}</td>
+          <td>{{ client.stats.totalPcs}}</td>
+          <td>₹ {{ client.stats.totalGross}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
